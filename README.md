@@ -10,12 +10,14 @@ AI-DLC is a set of structured workflow rules from AWS Labs that guide AI coding 
 
 ### From GitHub
 
-```bash
-# 1. Add as a marketplace
+In a Claude Code session:
+
+```
+# 1. Register the marketplace
 /plugin marketplace add shinichi-takahashi/claude-aidlc
 
 # 2. Install the plugin
-claude plugin install aidlc@shinichi-takahashi-claude-aidlc
+/plugin install aidlc@claude-aidlc
 ```
 
 ### Local development

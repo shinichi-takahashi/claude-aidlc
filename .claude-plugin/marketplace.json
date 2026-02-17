@@ -1,0 +1,17 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "claude-aidlc",
+  "description": "AI-DLC workflow rules manager for Claude Code",
+  "owner": {
+    "name": "shinichi"
+  },
+  "plugins": [
+    {
+      "name": "aidlc",
+      "description": "AI-DLC workflow rules manager - fetch and manage AI-Driven Development Life Cycle rules from awslabs/aidlc-workflows",
+      "source": ".",
+      "category": "productivity",
+      "homepage": "https://github.com/shinichi-takahashi/claude-aidlc"
+    }
+  ]
+}
