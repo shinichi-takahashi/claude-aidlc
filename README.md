@@ -8,10 +8,20 @@ AI-DLC is a set of structured workflow rules from AWS Labs that guide AI coding 
 
 ## Installation
 
+### From GitHub
+
 ```bash
-claude plugin add /path/to/claude-aidlc
-# or from GitHub
-claude plugin add shinichi-takahashi/claude-aidlc
+# 1. Add as a marketplace
+/plugin marketplace add shinichi-takahashi/claude-aidlc
+
+# 2. Install the plugin
+claude plugin install aidlc@shinichi-takahashi-claude-aidlc
+```
+
+### Local development
+
+```bash
+claude --plugin-dir /path/to/claude-aidlc
 ```
 
 ## Commands
@@ -25,12 +35,12 @@ Initialize AI-DLC workflow rules in your current project.
 ```
 
 This will:
-- Download the latest `core-workflow.md` as `CLAUDE.md`
-- Download all rule detail files to `.aidlc-rule-details/`
+- Download all rule files to `.aidlc-rule-details/`
+- Append AI-DLC rules to `CLAUDE.md` with `<!-- aidlc:start/end -->` markers
 - Record the installed version in `.aidlc-version`
 - Optionally update `.gitignore`
 
-If `CLAUDE.md` already exists, you'll be prompted to backup, merge, or cancel.
+If `CLAUDE.md` already exists, your content is preserved — AI-DLC rules are appended at the end.
 
 ### `/aidlc:update`
 
