@@ -19,8 +19,8 @@ RULE_DETAILS_PATH="${RULES_BASE_PATH}/aws-aidlc-rule-details"
 
 TARGET_DIR="${AIDLC_TARGET_DIR:-.}"
 VERSION_FILE="${TARGET_DIR}/.aidlc-version"
-CLAUDE_MD="${TARGET_DIR}/CLAUDE.md"
 RULE_DETAILS_DIR="${TARGET_DIR}/.aidlc-rule-details"
+CORE_WORKFLOW_DEST="${RULE_DETAILS_DIR}/core-workflow.md"
 
 # ─── Helpers ────────────────────────────────────────────────────────
 
@@ -122,9 +122,9 @@ do_init() {
   tag=$(get_latest_tag)
   info "Latest version: ${tag}"
 
-  # Download core-workflow.md → CLAUDE.md
+  # Download core-workflow.md → .aidlc-rule-details/core-workflow.md
   info "Downloading core-workflow.md..."
-  download_file "$tag" "$CORE_WORKFLOW_PATH" "$CLAUDE_MD"
+  download_file "$tag" "$CORE_WORKFLOW_PATH" "$CORE_WORKFLOW_DEST"
 
   # Download rule details
   info "Fetching rule detail file list..."
@@ -186,9 +186,9 @@ do_update() {
     rm -rf "$RULE_DETAILS_DIR"
   fi
 
-  # Download core-workflow.md → CLAUDE.md
+  # Download core-workflow.md → .aidlc-rule-details/core-workflow.md
   info "Downloading core-workflow.md..."
-  download_file "$latest_tag" "$CORE_WORKFLOW_PATH" "$CLAUDE_MD"
+  download_file "$latest_tag" "$CORE_WORKFLOW_PATH" "$CORE_WORKFLOW_DEST"
 
   # Download rule details
   info "Fetching rule detail file list..."
