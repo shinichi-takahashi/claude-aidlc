@@ -1,0 +1,7 @@
+{
+  "name": "aidlc",
+  "description": "AI-DLC workflow rules manager - fetch and manage AI-Driven Development Life Cycle rules from awslabs/aidlc-workflows",
+  "author": {
+    "name": "shinichi"
+  }
+}
