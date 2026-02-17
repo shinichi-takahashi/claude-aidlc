@@ -13,9 +13,36 @@ argument-hint: "[--force]"
 
 You are setting up AI-DLC (AI-Driven Development Life Cycle) workflow rules from [awslabs/aidlc-workflows](https://github.com/awslabs/aidlc-workflows) in the current project.
 
-The fetch script is located at: `$PLUGIN_DIR/scripts/fetch-aidlc.sh`
-
 ## Steps
+
+### 0. Locate Plugin Script
+
+Use the Glob tool to find `fetch-aidlc.sh`. Search in this order (first match wins):
+
+1. **Project root** (current working directory):
+```
+pattern: "**/.claude-plugin/../scripts/fetch-aidlc.sh"
+path: "."
+```
+or more directly:
+```
+pattern: "**/claude-aidlc/scripts/fetch-aidlc.sh"
+path: ".claude"
+```
+
+2. **User root** (fallback):
+```
+pattern: "**/claude-aidlc/scripts/fetch-aidlc.sh"
+path: "~/.claude"
+```
+
+3. If still not found, also try broader patterns:
+```
+pattern: "**/aidlc/scripts/fetch-aidlc.sh"
+```
+in both `.claude` and `~/.claude`.
+
+Store the resolved absolute path as `FETCH_SCRIPT` for use in later steps. If the script cannot be found, inform the user and stop.
 
 ### 1. Pre-flight Checks
 
@@ -34,7 +61,7 @@ Check if `CLAUDE.md` already exists in the current directory:
 Execute the fetch script to download the latest AI-DLC rules:
 
 ```bash
-AIDLC_TARGET_DIR="$(pwd)" bash "$PLUGIN_DIR/scripts/fetch-aidlc.sh" init
+AIDLC_TARGET_DIR="$(pwd)" bash "$FETCH_SCRIPT" init
 ```
 
 If the user chose "Merge" in step 1:
